@@ -1,0 +1,82 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkbox_viewimage" />
+
+        <TextView
+            android:text="@string/Welcome_word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textSize="15sp"
+            android:text="@string/pref_name_title" />
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/button_list"
+        android:text="@string/button_feedlist"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        style="@style/myButtonStyle"
+        android:textColor="@color/blue"
+        android:background="@color/bej"
+        android:onClick="feedListListener" />
+
+    <Button
+        android:id="@+id/button_linkweather"
+        android:text="@string/button_web_weather"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        style="@style/myButtonStyle"
+        android:layout_below="@+id/button_list"
+        android:textColor="@color/bej"
+        android:background="@color/blue"
+        android:onClick="webLinkListener" />
+
+    <Button
+        android:id="@+id/button_linktravel"
+        android:text="@string/button_web_travel"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        style="@style/myButtonStyle"
+        android:layout_below="@+id/button_linkweather"
+        android:textColor="@color/blue"
+        android:background="@color/bej"
+        android:onClick="webtravelListener" />
+
+    <Button
+        android:id="@+id/button_service"
+        android:text="@string/button_testservice"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        style="@style/myButtonStyle"
+        android:layout_below="@+id/button_linktravel"
+        android:textColor="@color/bej"
+        android:background="@color/blue"
+        android:onClick="testServiceListener" />
+
+</RelativeLayout>
