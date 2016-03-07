@@ -23,6 +23,9 @@ public class MainActivity extends ActionBarActivity {
     private SharedPreferences.OnSharedPreferenceChangeListener prefListener;
 
     private static final String TAG = "TEST";
+    private static final String USER_FEED = "nickname";
+    private static final String PASSWORD_FEED = "ticket";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,6 +118,10 @@ public class MainActivity extends ActionBarActivity {
 
     public void feedListListener(View view) {
         Intent intent = new Intent(MainActivity.this, FeedNewsActivity.class);
+        String userName = UIHelper.getText(this, R.id.fld_name_feed);
+        String password = UIHelper.getText(this, R.id.fld_password_feed);
+        intent.putExtra(USER_FEED, userName);
+        intent.putExtra(PASSWORD_FEED, password);
         startActivity(intent);
     }
 }

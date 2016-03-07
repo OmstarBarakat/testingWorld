@@ -9,6 +9,7 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/welcome_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -35,6 +36,58 @@
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/block"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/button_list">
+
+        <TextView
+            android:id="@+id/username_feed"
+            android:text="@string/text_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            style="@style/myTextStyle" />
+
+        <EditText
+            android:id="@+id/fld_name_feed"
+            android:inputType="textEmailAddress"
+            android:hint="@string/edit_user"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/username_feed"
+            android:layout_toEndOf="@+id/username_feed"
+            android:layout_marginStart="20dp"
+            style="@style/myEditStyle"
+            android:background="@color/grey_background" />
+
+        <TextView
+            android:id="@+id/password_feed"
+            android:text="@string/text_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/username_feed"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            style="@style/myTextStyle" />
+
+        <EditText
+            android:id="@+id/fld_password_feed"
+            android:inputType="textPassword"
+            android:hint="@string/edit_pass"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/password_feed"
+            android:layout_toEndOf="@+id/username_feed"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="10dp"
+            style="@style/myEditStyle" />
+
+    </RelativeLayout>
 
     <Button
         android:id="@+id/button_list"

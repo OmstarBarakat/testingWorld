@@ -40,8 +40,9 @@ public class FeedNewsActivity extends ActionBarActivity {
 
     List<dataItems> flowerList;
     private static final String LOGTAG = "TST";
-    private static final String USERNAME = "feeduser";
-    private static final String PASSWORD = "feedpassword";
+
+    private static String nickName;
+    private static String ticket;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,6 +57,11 @@ public class FeedNewsActivity extends ActionBarActivity {
 
         lTasks = new ArrayList<>();
 
+        Bundle extras = getIntent().getExtras();
+        nickName = extras.getString("nickname", "ERROR: Wrong user name!");
+        ticket = extras.getString("ticket", "ERROR: wrong password!");
+
+        Log.i(LOGTAG, "the name & password: " + nickName + ":" + "ticket");///
     }
 
     @Override
@@ -78,11 +84,11 @@ public class FeedNewsActivity extends ActionBarActivity {
 
     private void requestData(String uri) {
         MyTask task = new MyTask();
-        task.execute(uri);
+        task.execute(uri, nickName, ticket);
     }
 
     protected void updateOutput(String result) {
-        outputText.append(result + "\n");
+        outputText.setText(result + "\n");
     }
 
     protected void updateDisplay() {
@@ -105,15 +111,16 @@ public class FeedNewsActivity extends ActionBarActivity {
         @Override
         protected List<dataItems> doInBackground(String... params) {
 
-            String content = HttpManager.getData(params[0], USERNAME, PASSWORD);
+            String content = HttpManager.getData(params[0], params[1], params[2]);
 
-            publishProgress(content);
 
             if (content != null) {
+                publishProgress(content);
                 flowerList = FlowerXMLParser.parseFeed(content);
 
             } else {
                 Log.i(LOGTAG, "content is null");//
+                publishProgress("Wrong user name or password!");
                 flowerList = null;
             }
 

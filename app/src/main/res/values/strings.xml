@@ -4,6 +4,10 @@
     <string name="app_name">TGSample</string>
     <string name="Welcome_word">Hello, Welcome back!  :</string>
     <string name="action_settings">Settings</string>
+    <string name="text_user">User Name</string>
+    <string name="edit_user">Enter your username</string>
+    <string name="text_pass">Password</string>
+    <string name="edit_pass">Enter your password</string>
     <string name="button_feedlist">Latest Feeds</string>
     <string name="button_web_weather">weather</string>
     <string name="button_web_travel">travel</string>
