@@ -16,5 +16,14 @@
     <string name="label_latest_news">Latest News</string>
     <string name="action_doTask">Refresh</string>
     <string name="splash_placeholder">splash_placeholder</string>
+    <string name="send_uni_chat">send chat message</string>
+    <string name="send_uni_chat_hint">sending conversation with one message</string>
+    <string name="send_duo_chats">Send 2 chats message</string>
+    <string name="send_duo_chats_hint">sending two chats in one message</string>
+    <string name="send_rush_chat">Send chat with 3 messages</string>
+    <string name="send_rush_chat_hint">sending one conversation with three messages</string>
+    <string name="clear_log">Clear LOG</string>
+    <string name="label_notify_service">notify service</string>
+    <string name="notification_reply">Reply by voice</string>
 
 </resources>

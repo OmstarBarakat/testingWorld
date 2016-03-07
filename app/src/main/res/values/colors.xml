@@ -6,5 +6,7 @@
     <color name="colorAccent">#3F51B5</color>
     <color name="blue">#11acba</color>
     <color name="bej">#cacaca24</color>
+    <color name="blue_sea">#ff4092c3</color>
+    <color name="blue_dark">#ff241c99</color>
 
 </resources>

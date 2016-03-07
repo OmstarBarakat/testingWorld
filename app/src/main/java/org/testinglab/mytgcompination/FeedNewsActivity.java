@@ -7,12 +7,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBarActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.testinglab.mytgcompination.HQ.HttpManager;
@@ -32,6 +34,7 @@ public class FeedNewsActivity extends ActionBarActivity {
             "http://services.hanselandpetal.com/photos/";
 
     ProgressBar pb;
+    private TextView outputText;
     private ListView lv;
     List<MyTask> lTasks;
 
@@ -47,6 +50,9 @@ public class FeedNewsActivity extends ActionBarActivity {
 
         pb = (ProgressBar) findViewById(R.id.progressBar1);
         pb.setVisibility(View.INVISIBLE);
+
+        outputText = (TextView) findViewById(R.id.text_web_content);
+        outputText.setMovementMethod(new ScrollingMovementMethod());
 
         lTasks = new ArrayList<>();
 
@@ -75,6 +81,10 @@ public class FeedNewsActivity extends ActionBarActivity {
         task.execute(uri);
     }
 
+    protected void updateOutput(String result) {
+        outputText.append(result + "\n");
+    }
+
     protected void updateDisplay() {
         FlowerAdapter adapter = new FlowerAdapter(this, R.layout.item_flower, flowerList);
         lv = (ListView) findViewById(R.id.list_feed);
@@ -96,6 +106,8 @@ public class FeedNewsActivity extends ActionBarActivity {
         protected List<dataItems> doInBackground(String... params) {
 
             String content = HttpManager.getData(params[0], USERNAME, PASSWORD);
+
+            publishProgress(content);
 
             if (content != null) {
                 flowerList = FlowerXMLParser.parseFeed(content);
@@ -130,7 +142,7 @@ public class FeedNewsActivity extends ActionBarActivity {
 
         @Override
         protected void onProgressUpdate(String... values) {
-
+            updateOutput(values[0]);
         }
     }
 
@@ -139,10 +151,10 @@ public class FeedNewsActivity extends ActionBarActivity {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-            if (netInfo.getType() == ConnectivityManager.TYPE_WIFI) {
-                Toast.makeText(this, "This app connected via wifi", Toast.LENGTH_LONG).show();
-            } else if (netInfo.getType() == ConnectivityManager.TYPE_ETHERNET) {
+            if (netInfo.getType() == ConnectivityManager.TYPE_ETHERNET) {
                 Toast.makeText(this, "This app connected via the Ethernet network", Toast.LENGTH_LONG).show();
+            } else if (netInfo.getType() == ConnectivityManager.TYPE_WIFI) {
+                Toast.makeText(this, "This app connected via wifi", Toast.LENGTH_LONG).show();
             }
             return true;
         } else {

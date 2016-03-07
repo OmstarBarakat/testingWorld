@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,10 +22,13 @@ public class MainActivity extends ActionBarActivity {
     private SharedPreferences PREF;
     private SharedPreferences.OnSharedPreferenceChangeListener prefListener;
 
+    private static final String TAG = "TEST";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Log.d(TAG, "onCreate main Activity");
 
         PREF = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -38,6 +42,23 @@ public class MainActivity extends ActionBarActivity {
         PREF.registerOnSharedPreferenceChangeListener(prefListener);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart main Activity");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume main Activity");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop main Activity");
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,7 +82,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void refreshDisplay(View view) {
-        String prefValue = PREF.getString(USERNAME, "Not Found!");
+        String prefValue = PREF.getString(USERNAME, "Not Found! new user");
         Boolean prefFlag = PREF.getBoolean(VIEWIMAGE, false);
 
         UIHelper.displayText(this, R.id.tv_username, prefValue);
@@ -88,6 +109,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void testServiceListener(View view) {
+        Intent intent = new Intent(MainActivity.this, NotifyServiceActivity.class);
+        startActivity(intent);
     }
 
     public void feedListListener(View view) {

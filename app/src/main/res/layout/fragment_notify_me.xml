@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <Button
+        android:id="@+id/send_uni_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send_uni_chat"
+        style="@style/myButtonStyle"
+        android:textColor="#fff"
+        android:background="@color/colorPrimaryDark"
+        android:hint="@string/send_uni_chat_hint" />
+
+    <Button
+        android:id="@+id/send_duo_chats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send_duo_chats"
+        style="@style/myButtonStyle"
+        android:textColor="@color/colorPrimaryDark"
+        android:background="@color/grey_background"
+        android:hint="@string/send_duo_chats_hint" />
+
+    <Button
+        android:id="@+id/send_rush_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send_rush_chat"
+        style="@style/myButtonStyle"
+        android:textColor="#fff"
+        android:background="@color/colorPrimaryDark"
+        android:hint="@string/send_rush_chat_hint" />
+
+    <TextView
+        android:id="@+id/data_port"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:shadowRadius="@integer/abc_config_activityShortDur"
+        android:id="@+id/clear"
+        android:text="@string/clear_log" />
+
+</LinearLayout>

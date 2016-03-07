@@ -13,10 +13,21 @@
         android:layout_centerHorizontal="true"
         android:visibility="invisible" />
 
+    <TextView
+        android:id="@+id/text_web_content"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:scrollbars="vertical"
+        android:text="" />
+
     <ListView
         android:id="@+id/list_feed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/progressBar1"></ListView>
+        android:divider="@color/blue_sea"
+        android:dividerHeight="2dp"
+        android:layout_below="@+id/text_web_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="18dp"></ListView>
 
 </RelativeLayout>
