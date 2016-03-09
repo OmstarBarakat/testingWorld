@@ -24,7 +24,7 @@ import java.util.Iterator;
  */
 public class MessagingService extends Service {
 
-    private static final String TAG = MessagingService.class.getSimpleName();
+    private static final String TAG = "tag";
 
     public static final String READ_ACTION =
             "com.example.android.messagingservice.ACTION_MESSAGE_READ";
@@ -34,8 +34,6 @@ public class MessagingService extends Service {
     public static final String EXTRA_VOICE_REPLY = "extra_voice_reply";
     public static final int MSG_SEND_NOTIFICATION = 1;
     public static final String EOL = "\n";
-
-    private NotificationManagerCompat mNotificationManager;
 
     private final Messenger mMessenger = new Messenger(new IncomingHandler());
 
