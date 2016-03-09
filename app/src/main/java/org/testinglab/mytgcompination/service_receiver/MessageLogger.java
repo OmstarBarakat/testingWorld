@@ -26,14 +26,14 @@ public class MessageLogger {
     }
 
     public static SharedPreferences getPrefs(Context context) {
-        return context.getSharedPreferences(PREF_MESSAGE, Context.MODE_PRIVATE);
+        return context.getSharedPreferences("", 0);
     }
 
     public static String getAllMessages(Context context) {
-        return getPrefs(context).getString(LOG_KEY, "");
+        return context.toString();
     }
 
     public static void clear(Context context) {
-        getPrefs(context).edit().remove(LOG_KEY).apply();
+
     }
 }

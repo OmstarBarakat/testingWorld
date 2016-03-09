@@ -13,7 +13,7 @@ import android.util.Log;
  */
 public class MessageReplyReceiver extends BroadcastReceiver {
 
-    private static final String TAG = MessageReplyReceiver.class.getSimpleName();
+    private static final String TAG = "simple";
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -28,16 +28,9 @@ public class MessageReplyReceiver extends BroadcastReceiver {
         }
     }
 
-    /**
-     * Get the message text from the intent.
-     * Note that you should call {@code RemoteInput#getResultsFromIntent(intent)} to process
-     * the RemoteInput.
-     */
+
     private CharSequence getMessageText(Intent intent) {
         Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
-        if (remoteInput != null) {
             return remoteInput.getCharSequence(MessagingService.EXTRA_VOICE_REPLY);
-        }
-        return null;
     }
 }

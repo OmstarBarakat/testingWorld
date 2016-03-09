@@ -47,8 +47,8 @@ public class MessagingService extends Service {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case MSG_SEND_NOTIFICATION:
-                    int howManyConversations = msg.arg1 <= 0 ? 1 : msg.arg1;
-                    int messagesPerConv = msg.arg2 <= 0 ? 1 : msg.arg2;
+                    int howManyConversations = msg.arg1 < 0 ? 1 : msg.arg1;
+                    int messagesPerConv = msg.arg2 < 0 ? 1 : msg.arg2;
                     sendNotification(howManyConversations, messagesPerConv);
                     break;
                 default:
@@ -143,23 +143,6 @@ public class MessagingService extends Service {
             }
         }
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext())
-                .setSmallIcon(R.drawable.notification_icon)
-                .setLargeIcon(BitmapFactory.decodeResource(
-                        getApplicationContext().getResources(), R.drawable.android_contact))
-                .setContentText(messageForNotification.toString())
-                .setWhen(conversation.getTimestamp())
-                .setContentTitle(conversation.getParticipantName())
-                .setContentIntent(readPendingIntent)
-                .extend(new CarExtender()
-                        .setUnreadConversation(unreadConvBuilder.build())
-                        .setColor(getApplicationContext()
-                                .getResources().getColor(R.color.blue_sea)));
-
-        MessageLogger.logMessage(getApplicationContext(), "Sending notification "
-                + conversation.getConversationId() + " conversation: " + conversation);
-
-        mNotificationManager.notify(conversation.getConversationId(), builder.build());
     }
 
 }

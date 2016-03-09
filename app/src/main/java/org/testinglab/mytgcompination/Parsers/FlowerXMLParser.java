@@ -20,8 +20,7 @@ public class FlowerXMLParser {
             List<dataItems> flowerList = new ArrayList<>();
             String xmlText = "";
 
-            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-            XmlPullParser parser = factory.newPullParser();
+            XmlPullParser parser;
             parser.setInput(new StringReader(content));
 
             int eventType = parser.getEventType();
@@ -29,7 +28,7 @@ public class FlowerXMLParser {
             while (eventType != XmlPullParser.END_DOCUMENT) {
 
                 switch (eventType) {
-                    case XmlPullParser.START_TAG:
+                    case START_TAG:
                         currentTagName = parser.getName();
                         if (currentTagName.equals("product")) {
                             inDataItemTag = true;
@@ -38,14 +37,14 @@ public class FlowerXMLParser {
                         }
                         break;
 
-                    case XmlPullParser.END_TAG:
+                    case END_TAG:
                         if (parser.getName().equals("product")) {
                             inDataItemTag = false;
                         }
                         currentTagName = "";
                         break;
 
-                    case XmlPullParser.TEXT:
+                    case TEXT:
                         xmlText = parser.getText();
                         if (inDataItemTag && flower != null) {
                             switch (currentTagName) {

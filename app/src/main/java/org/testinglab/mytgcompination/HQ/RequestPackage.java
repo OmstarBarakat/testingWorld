@@ -1,7 +1,5 @@
 package org.testinglab.mytgcompination.HQ;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,21 +40,4 @@ public class RequestPackage {
         params.put(key, value);
     }
 
-    public String getEncodedParams() {
-        StringBuilder sb = new StringBuilder();
-        for (String key : params.keySet()) {
-            String value = null;
-            try {
-                value = URLEncoder.encode(params.get(key), "UTF-8");
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-
-            if (sb.length() > 0) {
-                sb.append("&");
-            }
-            sb.append(key + "=" + value);
-        }
-        return sb.toString();
-    }
 }

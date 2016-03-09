@@ -72,15 +72,10 @@ public class Conversations {
             return messages;
         }
 
-        public long getTimestamp() {
-            return timestamp;
-        }
-
         public String toString() {
             return "[Conversation: conversationId=" + conversationId +
                     ", participantName=" + participantName +
-                    ", messages=" + messages +
-                    ", timestamp=" + timestamp + "]";
+                    ", messages=" + messages + "]";
         }
     }
 
@@ -94,7 +89,7 @@ public class Conversations {
         for (int i = 0; i < howManyConversations; i++) {
             conversations[i] = new Conversation(
                     ThreadLocalRandom.current().nextInt(),
-                    name(), makeMessages(messagesPerConversation));
+                    "name", makeMessages(messagesPerConversation));
         }
         return conversations;
     }
@@ -109,8 +104,4 @@ public class Conversations {
         return messages;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private static String name() {
-        return PARTICIPANTS[ThreadLocalRandom.current().nextInt(0, PARTICIPANTS.length)];
-    }
 }
